@@ -1,26 +1,26 @@
-package com.alen.algorithm.until;
+package com.alen.algorithm.sort;
 
 import java.util.Arrays;
 
 /**
+ * 选择排序
+ *
  * @author lijialun
  * @Desc
- * @create 2020-09-18 13:15
+ * @create 2020-09-18 11:39
  **/
-public class Insert {
+public class Select {
 
     //排序
     public static void sort(Comparable[] comparables) {
-        for (int i = 1; i <comparables.length-1 ; i++) {
-            for (int j = i; j >0 ; j--) {
-                if(greater(j-1,j)){
-                    exch(comparables,j-1,j);
-                }else {
-                    //因为以前已经是有序的了，所以出现这种情况，j肯定比前面所有的都大
-                    break;
+        for (int i = 0; i <= comparables.length - 2; i++) {
+            int min = i;
+            for (int j = i; j < comparables.length; j++) {
+                if (greater(j, j + 1)) {
+                    min = j + 1;
                 }
             }
-
+            exch(comparables, i, min);
         }
     }
 

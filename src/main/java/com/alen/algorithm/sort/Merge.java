@@ -1,4 +1,4 @@
-package com.alen.algorithm.until;
+package com.alen.algorithm.sort;
 
 import java.util.Arrays;
 

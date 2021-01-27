@@ -1,24 +1,33 @@
-package com.alen.algorithm.until;
+package com.alen.algorithm.sort;
 
 import java.util.Arrays;
 
 /**
- * 冒泡
- *
  * @author lijialun
  * @Desc
- * @create 2020-09-18 11:01
+ * @create 2020-09-21 9:26
  **/
-public class Bubble {
+public class Shell {
 
-    //排序
     public static void sort(Comparable[] comparables) {
-        //每次要冒泡的元素
-        for (int i = comparables.length - 1; i > 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (greater(comparables[j], comparables[j + 1])) {
-                    exch(comparables, j, j + 1);
+        //确定增长量 h
+        int N=comparables.length;
+        int h=1;
+        while (h<N/2){
+            h=h*2+1;
+        }
+        System.out.println("h---:"+h);
+
+        while (h>=1){
+            for (int i = h; i < N; i++) {
+                for (int j = i; j>=h ; j-=h) {
+                  if(greater(comparables[j-h],comparables[j])){
+                     exch(comparables,j-h,j);
+                  }else {
+                      break;
+                  }
                 }
+                h=h/2;
             }
         }
 
@@ -42,3 +51,4 @@ public class Bubble {
         System.out.println(Arrays.toString(integers));
     }
 }
+
